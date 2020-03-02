@@ -1,0 +1,13 @@
+
+.chart-bar.series0 {
+    -fx-background-color: red;
+}
+.chart-bar.series1 {
+    -fx-background-color: blue;
+}
+.data0.chart-pie { -fx-pie-color: aqua; }
+.data1.chart-pie { -fx-pie-color: gold; }
+.data2.chart-pie { -fx-pie-color: darkorange; }
+.data3.chart-pie { -fx-pie-color: darksalmon; }
+.data4.chart-pie { -fx-pie-color: lawngreen; }
+.data5.chart-pie { -fx-pie-color: plum; }
