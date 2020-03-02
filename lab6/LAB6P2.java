@@ -36,13 +36,16 @@ public class LAB6P2 extends Application {
 //create pieChart and fill it with data
         ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList(
-                new PieChart.Data(""+ageGroups[0]+"", purchasesByAgeGroup[0]),
-                new PieChart.Data(""+ageGroups[1]+"", purchasesByAgeGroup[1]),
-                new PieChart.Data(""+ageGroups[2]+"", purchasesByAgeGroup[2]),
-                new PieChart.Data(""+ageGroups[3]+"", purchasesByAgeGroup[3]),
-                new PieChart.Data(""+ageGroups[4]+"", purchasesByAgeGroup[4]),
-                new PieChart.Data(""+ageGroups[5]+"", purchasesByAgeGroup[5])
+//                new PieChart.Data(""+ageGroups[0]+"", purchasesByAgeGroup[0]),
+//                new PieChart.Data(""+ageGroups[1]+"", purchasesByAgeGroup[1]),
+//                new PieChart.Data(""+ageGroups[2]+"", purchasesByAgeGroup[2]),
+//                new PieChart.Data(""+ageGroups[3]+"", purchasesByAgeGroup[3]),
+//                new PieChart.Data(""+ageGroups[4]+"", purchasesByAgeGroup[4]),
+//                new PieChart.Data(""+ageGroups[5]+"", purchasesByAgeGroup[5])
         		);
+        for(int x=0;x<ageGroups.length;x++)
+        pieChartData.add(new PieChart.Data(""+ageGroups[x]+"", purchasesByAgeGroup[x]));
+        
          PieChart chart = new PieChart(pieChartData);
          chart.setTitle("Lab6 P2");
          chart.getStylesheets().add(getClass().getResource("chart.css").toExternalForm());
