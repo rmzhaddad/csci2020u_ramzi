@@ -15,12 +15,16 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -38,6 +42,24 @@ public class Lab8S extends Application {
 	// create a File chooser 
     FileChooser fil_chooser = new FileChooser(); 
     FileChooser fil2_chooser = new FileChooser(); 
+    
+    
+	// creating labels
+	Label SIDL = new Label("SID");
+	Label AssignmentsL = new Label("Assignments");
+	Label MidtermL = new Label("Midterm");
+	Label FinalExamL = new Label("Final Exam");
+	// creating a button
+	Button CalculateValue = new Button("Add");
+	// creating TextFields
+	TextField SIDF = new TextField();
+	TextField AssignmentsF = new TextField();
+	TextField MidtermF = new TextField();
+	TextField FinalExamF = new TextField();
+    
+    
+    
+    
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -81,13 +103,29 @@ public class Lab8S extends Application {
 		// this method will display the tableview
 		displaytable();
 		//save();
+		//this method will display and create
+		GridPane gridPane =new GridPane();
+		extracted(gridPane);
 		
-		
-		
-		VBox vBox = new VBox(menuBar, table);
+		VBox vBox = new VBox(menuBar, table,gridPane);
 		Scene scene = new Scene(vBox, 960, 600);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	private void extracted(GridPane gridPane) {
+		gridPane.add(SIDL, 0, 0, 1, 1);
+		gridPane.add(SIDF, 1, 0, 1, 1);
+		gridPane.add(AssignmentsL, 2, 0, 1, 1);
+		gridPane.add(AssignmentsF, 3, 0, 1, 1);
+		gridPane.add(MidtermL, 0, 1, 1, 1);
+		gridPane.add(MidtermF, 1, 1, 1, 1);
+		gridPane.add(FinalExamL, 2, 1, 1, 1);
+		gridPane.add(FinalExamF, 3, 1, 1, 1);
+		gridPane.add(CalculateValue, 0, 3, 2, 2);
+		CalculateValue.setOnAction(e->marks.add(
+		new StudentRecord(""+SIDF.getText()+"",Double.parseDouble(AssignmentsF.getText()), Double.parseDouble(MidtermF.getText()),Double.parseDouble(FinalExamF.getText())
+				)));
 	}
 
 	private void displaytable() throws IOException {
@@ -215,8 +253,9 @@ public class Lab8S extends Application {
 		}
 
 	}
-
 	private void saveAs() {
+		// this function will set the location of children in the gridapane
+		
 		StudentRecord sturcd = new StudentRecord("", 0.0, 0.0, 0.0);
 		List<List<String>> arrList = new ArrayList<>();
 		for (int i = 0; i < table.getItems().size(); i++) {
